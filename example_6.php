@@ -91,4 +91,15 @@
 
     echo "$rub руб $kop коп<br/>"; // выводим результат
     echo "$priceMod руб <br/>"; // выводим результат
+
+    // ===========================
+
+    $ip = "192.168.1.1";
+    $one = (int) substr($ip, 0, 3);
+    $two = (int) substr($ip, 4, 3);
+    $three = (int) substr($ip, 8, 1);
+    $four = (int) substr($ip, 10, 1);
+    $ipNumber = ($one * 256 ** 3) + ($two * 256 ** 2) + ($three * 256 ** 1) + ($four * 256 ** 0);
+
+    echo $one." ".$two." ".$three." ".$four."<br/>".$ipNumber;
     ?>
