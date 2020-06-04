@@ -100,6 +100,13 @@
     $three = (int) substr($ip, 8, 1);
     $four = (int) substr($ip, 10, 1);
     $ipNumber = ($one * 256 ** 3) + ($two * 256 ** 2) + ($three * 256 ** 1) + ($four * 256 ** 0);
+    
+    // Если написать так то можго из любого ip сделать число
+
+    // $ipArray = explode(".", $ip);
+    // [$one, $two, $three, $four] = $ipArray;
+    
+    // ==--==//
 
     echo $one." ".$two." ".$three." ".$four."<br/>".$ipNumber;
     ?>
