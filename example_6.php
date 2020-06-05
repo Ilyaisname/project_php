@@ -101,6 +101,7 @@
     $four = (int) substr($ip, 10, 1);
     $ipNumber = ($one * 256 ** 3) + ($two * 256 ** 2) + ($three * 256 ** 1) + ($four * 256 ** 0);
     
+    echo $ipNumber;
     // Если написать так то можго из любого ip сделать число
 
     // $ipArray = explode(".", $ip);
@@ -108,5 +109,30 @@
     
     // ==--==//
 
-    echo $one." ".$two." ".$three." ".$four."<br/>".$ipNumber;
+    
+
+    // рабочий вариант
+
+    $ip = "192.168.255.196";
+
+    if (gettype($ip) === 'string') {
+      $ipArray = explode(".", $ip);
+      [$one, $two, $three, $four] = $ipArray;
+      $ipNumber = ($one * 256 ** 3) + ($two * 256 ** 2) + ($three * 256 ** 1) + ($four * 256 ** 0);
+      
+      echo "Число из ip = $ipNumber";
+
+    } elseif (gettype($ip) === 'integer') {
+      
+      $one = (int) ($ip / 256 / 256 / 256);
+      $two = (int) ( ($ip - $one * 256 ** 3) / 256 / 256);
+      $three = (int) ( ($ip - $one * 256 ** 3 - $two * 256 ** 2 ) / 256);
+      $four = (int) $ip - $one * 256 ** 3 - $two * 256 ** 2 - $three * 256;
+      
+      $ipStr = $one.".".$two.".".$three.".".$four;
+      
+      echo "Ip = $ipStr";
+    } else {
+      echo "Error";
+    }
     ?>
